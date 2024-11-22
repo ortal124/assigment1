@@ -40,10 +40,10 @@ const getPostById = async (req, res) => {
     } catch (error) {
       res.status(500).json({ message: 'Error fetching post', error: error.message });
     }
-  };
+};
 
-  module.exports = {
-    createPost,
-    getPosts,
-    getPostById
-  }; 
+module.exports = {
+  createPost,
+  getPosts,
+  getPostById
+};
