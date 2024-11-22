@@ -11,26 +11,24 @@ const createPost = async (req, res) => {
   };
 
 const getPosts = async (req, res) => {
+  const { sender } = req.query;
+
   try {
-    const posts = await postService.getPosts();
-    res.status(200).json(posts);
+    let posts;
+
+    if (sender) {
+      posts = await postService.getPostsBySender(sender)
+    } else {
+      posts = await postService.getPosts();
+    }
+
+    return res.status(200).json(posts);
   } catch (error) {
-    res.status(500).json({ message: 'Error getting all posts', error: error.message });
+    console.error(error);
+    return res.status(500).json({ message: "Server error." });
   }
 };
 
-const getPostsBySender = async (req, res) => {
-  try {
-    const senderId = req.query.sender;
-    if (!senderId) {
-      return res.status(400).json({ message: 'Sender ID is required' });
-    }
-    const posts = await postService.getPostsBySender(senderId);
-    res.status(200).json(posts);
-  } catch (error) {
-    res.status(500).json({ message: 'An error occurred while retrieving posts' });
-  }
-};
 const getPostById = async (req, res) => {
     try {
       const { postId } = req.params;
