@@ -10,6 +10,16 @@ const createComment = async (req, res) => {
     }
   };
 
+const getAllComments = async (req, res) => {
+    try {
+      const comments = await commentService.getAllComments();
+      res.json(comments);
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching comments', error: error.message });
+    }
+  };
+
 module.exports = {
-    createComment
+    createComment,
+    getAllComments
 }; 
