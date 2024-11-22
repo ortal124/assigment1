@@ -13,5 +13,6 @@ const getPosts = async () => {
 };
 
   module.exports = {
-    createPost
+    createPost,
+    getPosts
   };
