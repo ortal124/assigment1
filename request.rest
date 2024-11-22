@@ -1,0 +1,74 @@
+# Create a new post
+POST http://localhost:3000/post/
+Content-Type: application/json
+
+{
+  "content": "This is a new post from request file",
+  "senderId": "12345"
+}
+
+###
+
+# Get all posts
+GET http://localhost:3000/post/
+
+###
+
+
+# Get a post by ID
+GET http://localhost:3000/post/6740533a3db4fc08b39f03b5
+
+###
+
+# Get a post by sender ID
+GET http://localhost:3000/post?sender=12345
+
+###
+
+# Update a post by ID
+PUT http://localhost:3000/post/6740533a3db4fc08b39f03b5
+Content-Type: application/json
+
+{
+  "content": "Updated content of the post",
+  "senderId": "12345"
+}
+
+###
+
+# Create a new comment
+POST http://localhost:3000/comment/
+Content-Type: application/json
+
+{
+  "content": "This is a new comment",
+  "senderId": "67890",
+  "postId": "6740533a3db4fc08b39f03b5"
+}
+
+###
+
+# Update a comment by ID
+PUT http://localhost:3000/comment/67407726b03415013b9c4f34
+Content-Type: application/json
+
+{
+  "content": "Updated comment contentttttt",
+  "senderId": "67890",
+  "postId": "6740533a3db4fc08b39f03b5"
+}
+
+###
+
+# Get all comments
+GET http://localhost:3000/comment/
+
+###
+
+# Get comments by post ID
+GET http://localhost:3000/comment/post?postId=6740533a3db4fc08b39f03b5
+
+###
+
+# Delete a comment by ID
+DELETE http://localhost:3000/comment/67406734fb9f6c1c2d26b443
