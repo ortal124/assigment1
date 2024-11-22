@@ -24,9 +24,28 @@ const getPostById = async (postId) => {
     return await Post.findById(postId);
   };
 
+  const updatePost = async (postId, content, senderId) => {
+    try {
+      const post = await Post.findById(postId);
+  
+      if (!post) {
+        throw new Error('Post not found');
+      }
+  
+      post.content = content;
+      post.senderId = senderId;
+  
+      return await post.save();
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
+
   module.exports = {
     createPost,
     getPosts,
     getPostsBySender,
-    getPostById
+    getPostById,
+    updatePost
   };
