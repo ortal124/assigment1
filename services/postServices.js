@@ -12,7 +12,12 @@ const getPosts = async () => {
   return await Post.find();
 };
 
+const getPostById = async (postId) => {
+    return await Post.findById(postId);
+  };
+
   module.exports = {
     createPost,
-    getPosts
+    getPosts,
+    getPostById
   };

@@ -18,7 +18,22 @@ const getPosts = async (req, res) => {
     res.status(500).json({ message: 'Error getting all posts', error: error.message });
   }
 };
+
+const getPostById = async (req, res) => {
+    try {
+      const { postId } = req.params;
+      const post = await postService.getPostById(postId);
+      if (!post) {
+        return res.status(404).json({ message: 'Post not found' });
+      }
+      res.status(200).json(post);
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching post', error: error.message });
+    }
+  };
+
   module.exports = {
     createPost,
-    getPosts
+    getPosts,
+    getPostById
   }; 
