@@ -34,9 +34,14 @@ const getAllComments = async () => {
   }
 };
 
+const deleteComment = async (commentId) => {
+  await Comment.findByIdAndDelete(commentId); 
+};
+
 
 module.exports = {
     createComment,
     updateComment,
-    getAllComments
+    getAllComments,
+    deleteComment
 };
