@@ -45,6 +45,5 @@ const getPostById = async (req, res) => {
   module.exports = {
     createPost,
     getPosts,
-    getPostsBySender,
     getPostById
   }; 
