@@ -12,6 +12,14 @@ const getPosts = async () => {
   return await Post.find();
 };
 
+const getPostsBySender = async (senderId) => {
+  try {
+    const posts = await Post.find({ senderId });
+    return posts;
+  } catch (error) {
+    throw new Error('Error retrieving posts');
+  }
+};
 const getPostById = async (postId) => {
     return await Post.findById(postId);
   };
@@ -19,5 +27,6 @@ const getPostById = async (postId) => {
   module.exports = {
     createPost,
     getPosts,
+    getPostsBySender,
     getPostById
   };
