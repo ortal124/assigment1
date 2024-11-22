@@ -20,9 +20,13 @@ const getPostsBySender = async (senderId) => {
     throw new Error('Error retrieving posts');
   }
 };
+const getPostById = async (postId) => {
+    return await Post.findById(postId);
+  };
 
   module.exports = {
     createPost,
     getPosts,
-    getPostsBySender
+    getPostsBySender,
+    getPostById
   };
