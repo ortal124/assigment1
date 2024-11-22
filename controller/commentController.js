@@ -26,7 +26,18 @@ const updateComment = async (req, res) => {
       res.status(404).json({ message: 'Error comment not found with this ID', error: error.message });
     }
   };
+
+const getAllComments = async (req, res) => {
+    try {
+        const comments = await commentService.getAllComments();
+        res.json(comments);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching comments', error: error.message });
+    }
+};
+
 module.exports = {
     createComment,
-    updateComment
+    updateComment,
+    getAllComments
 }; 
