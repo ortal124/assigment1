@@ -8,6 +8,9 @@ const createPost = async (content, senderId) => {
     return await newPost.save();
   };
 
+const getPosts = async () => {
+  return await Post.find();
+};
 
   module.exports = {
     createPost
