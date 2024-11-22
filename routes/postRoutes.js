@@ -4,6 +4,8 @@ const postController = require('../controller/postController');
 
 router.post('/', postController.createPost);
 router.get('/', postController.getPosts);
+router.get('/:sender', postController.getPostsBySender);
+
 
 module.exports = router;
 
