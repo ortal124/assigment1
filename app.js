@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const postRoutes = require('./routes/postRoutes');
 
 const app = express();
 const PORT = 3000;
@@ -23,6 +24,9 @@ mongoose.connect(MONGO_URI, { dbName: 'assignment1', useNewUrlParser: true, useU
     .catch((error) => {
         console.error('Error connecting to MongoDB:', error.message);
     });
+
+app.use('/post', postRoutes);
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
