@@ -34,14 +34,23 @@ const getAllComments = async () => {
   }
 };
 
+const getCommentsByPostId = async (postId) => {
+  try {
+    const comments = await Comment.find({ postId });
+    return comments;
+  } catch (error) {
+    throw new Error('Error retrieving comments by post Id');
+  }
+};
+
 const deleteComment = async (commentId) => {
   await Comment.findByIdAndDelete(commentId); 
 };
-
 
 module.exports = {
     createComment,
     updateComment,
     getAllComments,
+    getCommentsByPostId,
     deleteComment
 };
