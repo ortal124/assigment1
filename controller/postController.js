@@ -42,8 +42,26 @@ const getPostById = async (req, res) => {
     }
 };
 
+  const updatePost = async (req, res) => {
+    try {
+      const postId = req.params.postId; 
+      const { content, senderId } = req.body; 
+  
+      if (!content || !senderId) {
+        return res.status(400).json({ message: 'Content and sender are required for update' });
+      }
+  
+      const updatedPost = await postService.updatePost(postId, content, senderId);
+  
+      res.json(updatedPost);
+    } catch (error) {
+      res.status(404).json({ message: 'Error updating post', error: error.message });
+    }
+};
+
 module.exports = {
   createPost,
   getPosts,
-  getPostById
-};
+  getPostById,
+  updatePost
+}; 

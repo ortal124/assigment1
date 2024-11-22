@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const postRoutes = require('./routes/postRoutes');
+const commentRoutes = require('./routes/commentRoutes');
 
 const app = express();
 const PORT = 3000;
@@ -26,6 +27,7 @@ mongoose.connect(MONGO_URI, { dbName: 'assignment1', useNewUrlParser: true, useU
     });
 
 app.use('/post', postRoutes);
+app.use('/commment', commentRoutes);
 
 
 app.listen(PORT, () => {
