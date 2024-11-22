@@ -27,7 +27,7 @@ mongoose.connect(MONGO_URI, { dbName: 'assignment1', useNewUrlParser: true, useU
     });
 
 app.use('/post', postRoutes);
-app.use('/commment', commentRoutes);
+app.use('/comment', commentRoutes);
 
 
 app.listen(PORT, () => {
