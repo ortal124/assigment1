@@ -36,8 +36,19 @@ const getAllComments = async (req, res) => {
     }
 };
 
+const getCommentsByPostId = async (req, res) => {
+  try {
+      const postId = req.query.postId;
+      const comments = await commentService.getCommentsByPostId(postId);
+      res.json(comments);
+  } catch (error) {
+      res.status(500).json({ message: 'Error fetching comments by post id', error: error.message });
+  }
+};
+
 module.exports = {
     createComment,
     updateComment,
-    getAllComments
+    getAllComments,
+    getCommentsByPostId
 }; 
